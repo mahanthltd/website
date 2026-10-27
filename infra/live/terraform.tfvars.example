@@ -1,0 +1,12 @@
+# Copy to terraform.tfvars (gitignored) and fill in real values.
+
+project_id      = "mahanthltd-prod"
+region          = "europe-west2"
+billing_account = "XXXXXX-XXXXXX-XXXXXX"
+monthly_budget  = 1
+
+github_repository = "mahanthltd/website"
+domain            = "mahanthltd.co.uk"
+
+# Resend API key goes into Secret Manager (mahanthltd-resend-api-key),
+# never into this file — see infra/live/main.tf and infra/apply.sh.

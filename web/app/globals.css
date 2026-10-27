@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+/*
+ * Mahanth Ltd design tokens — light, professional, built around the actual
+ * brand mark (a cyan-to-mint gradient uptrend/circuit "M"). The gradient is
+ * an ACCENT here (CTAs, the logo, small labels), not the page's base
+ * palette — most of the page is a clean light neutral, which reads as more
+ * conventional/approachable for a consultancy than an all-dark theme.
+ */
+:root {
+  color-scheme: light;
+
+  --background: #f6f8fb;
+  --foreground: #121820;
+  --muted: #5c6773;
+  --surface: #ffffff;
+  --surface-raised: #ffffff;
+  --border: #e3e7ec;
+
+  /* The brand gradient, sampled directly from the logo mark — used for
+     CTA backgrounds, the logo, and small accent labels. */
+  --brand-cyan: #34cfed;
+  --brand-green: #83fda8;
+  /* A darker shade of the same cyan hue, for use AS TEXT on a light
+     background (the raw --brand-cyan fails contrast as text on white). */
+  --brand: #0e7490;
+  --brand-soft: #e6f8f7;
+  /* Fixed dark ink for text sitting on top of the bright gradient
+     (buttons) — independent of the theme's own foreground/background, so
+     it stays readable even if the surrounding theme ever changes. */
+  --brand-ink: #0a0f16;
+
+  --success: #0f8a5f;
+  --success-soft: #dcf5ea;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-surface: var(--surface);
+  --color-surface-raised: var(--surface-raised);
+  --color-line: var(--border);
+
+  --color-brand: var(--brand);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-green: var(--brand-green);
+  --color-brand-soft: var(--brand-soft);
+  --color-brand-ink: var(--brand-ink);
+
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+
+  --radius-card: 16px;
+  --radius-control: 10px;
+  --shadow-card: 0 1px 2px rgba(18, 24, 32, 0.06);
+  --shadow-raised: 0 12px 28px rgba(18, 24, 32, 0.1), 0 2px 8px rgba(18, 24, 32, 0.06);
+
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.brand-gradient-text {
+  background: linear-gradient(90deg, var(--brand-cyan), var(--brand-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.brand-gradient-bg {
+  background: linear-gradient(90deg, var(--brand-cyan), var(--brand-green));
+}

@@ -1,0 +1,25 @@
+# Mahanth Ltd marketing site — a single Next.js service, no database, no
+# separate API. Port 3200: 3000/3002/3100 already belong to sibling
+# projects on this machine (tirupurhub-com, rcbi, ordersmart) — see each
+# project's own AGENTS.md "Local environment" note for the full port map.
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: docker/web.Dockerfile
+      target: dev
+    image: mahanthltd-web:local
+    container_name: mahanthltd-web
+    restart: unless-stopped
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      PORT: "3000"
+    volumes:
+      - ./web:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "${WEB_PORT:-3200}:3000"
